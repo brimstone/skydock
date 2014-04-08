@@ -9,6 +9,7 @@ function createService(container) {
         Port: 80,
         Environment: env.DNS_ENVIRONMENT || defaultEnvironment,
         TTL: env.DNS_TTL || defaultTTL,
+        Region: env.REGION || defaultRegion,
         Service: env.DNS_SERVICE || cleanImageName(container.Image),
         Instance: env.DNS_INSTANCE || removeSlash(container.Name),
         Host: container.NetworkSettings.IpAddress

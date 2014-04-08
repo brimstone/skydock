@@ -56,6 +56,9 @@ func (r *pluginRuntime) createService(container *docker.Container) (*msg.Service
 	if service.Environment, err = getString(obj, "Environment"); err != nil {
 		return nil, err
 	}
+	if service.Region, err = getString(obj, "Region"); err != nil {
+		return nil, err
+	}
 	service.TTL = uint32(rawTTL)
 	service.Port = uint16(rawPort)
 
@@ -87,6 +90,9 @@ func loadDefaults(runtime *otto.Otto) error {
 		return err
 	}
 	if err := runtime.Set("defaultEnvironment", environment); err != nil {
+		return err
+	}
+	if err := runtime.Set("defaultRegion", region); err != nil {
 		return err
 	}
 	if err := runtime.Set("cleanImageName", func(call otto.FunctionCall) otto.Value {

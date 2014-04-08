@@ -4,6 +4,7 @@ function createService(container) {
         Port: port,
         Environment: defaultEnvironment,
         TTL: defaultTTL,
+		Region: defaultRegion,
         Service: cleanImageName(container.Image),
         Instance: removeSlash(container.Name),
         Host: container.NetworkSettings.IpAddress

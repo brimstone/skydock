@@ -23,6 +23,7 @@ var (
 	pathToSocket        string
 	domain              string
 	environment         string
+	region				string
 	skydnsUrl           string
 	skydnsContainerName string
 	secret              string
@@ -45,6 +46,7 @@ func init() {
 	flag.StringVar(&secret, "secret", "", "skydns secret")
 	flag.StringVar(&domain, "domain", "", "same domain passed to skydns")
 	flag.StringVar(&environment, "environment", "dev", "environment name where service is running")
+	flag.StringVar(&region, "region", "us-east1", "region name where service is running")
 	flag.IntVar(&ttl, "ttl", 60, "default ttl to use when registering a service")
 	flag.IntVar(&beat, "beat", 0, "heartbeat interval")
 	flag.IntVar(&numberOfHandlers, "workers", 3, "number of concurrent workers")
